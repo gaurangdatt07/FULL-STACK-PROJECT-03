@@ -1,0 +1,50 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+      
+  <ul>
+         {% for message in messages %}
+         
+    <li>
+      <strong>{{ message }}</strong>
+    </li>
+         {% endfor %}
+      
+  </ul>
+      {% endif %}
+      {% endwith %}
+      {% if 'username' in login_session %}
+      
+  
+    
+      {% else %}
+      {% endif %}
+      
+  
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
+	
+<div class = 'pane'>
+<h1>CLUBS</h1>
+
+<a href="{{url_for('newClub')}}" > <h3> Create a New Club </h3> </a>
+
+{% for club in clubs %}
+
+
+
+<a  href = "{{url_for('showPlayer', club_id = club.id)}}"> <p class="club">{{club.name}}</p></a>
+
+<p ><a class="club" href = "{{url_for('editClub',club_id = club.id)}}">Edit Club</a></p>
+
+<p > <a class="club" href = "{{url_for('deleteClub',club_id = club.id)}}">Delete Club</a> </p>
+
+
+
+
+{% endfor %}
+
+</div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
+<h1> Are you sure you want to delete {{player.name}}? </h1>
+
+<form action="{{url_for('deletePlayer',club_id=club_id,player_id = player.id)}}" method = 'post'>
+
+<button type='submit',class="btn btn-danger">
+    <i class="material-icons">delete</i>Delete
+	</button>
+</form>
+
+<a href = '{{url_for("showClubs",player_id = player.id , club_id = player.club_id)}}'> <button type="submit" class="btn btn-warning">
+		<i class="material-icons">cancel</i>Cancel
+	</button> </a>
+{% endblock %}

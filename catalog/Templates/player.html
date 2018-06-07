@@ -1,0 +1,160 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
+	</head>
+	<body>
+		<div class = 'pane'>
+		<h1>{{ club.name }}</h1>
+		
+		{% with messages = get_flashed_messages() %}
+      {% if messages %}
+          
+        <ul>
+        {% for message in messages %}
+            <li> <strong> {{ message }} </strong> </li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+
+    {% if players !=[] %}
+
+		<a href = "{{url_for('newPlayer', club_id = club.id )}}">Sign New Player</a>
+	</br></br>
+
+	<h2>GoalKeepers</h2>
+
+		{% for i in players %}
+		{% if i.position == 'GoalKeeper' %}
+
+		<p>{{i.name}}</p>
+	
+
+		<p>{{i.description}}</p>
+	
+
+		<p>{{i.jersey}}</p>
+        <p> {{i.position}}</p>
+	
+		<a href='{{url_for('editPlayer', club_id = club.id, player_id=i.id ) }}' >Edit</a>
+	</br>
+	<a href='{{url_for('deletePlayer', club_id = club.id, player_id=i.id ) }}' >Delete</a>
+</br>
+</br>
+		{% endif %}
+
+		{% endfor %}
+
+		
+
+		</br></br>
+
+	<h2>CenterBacks</h2>
+
+		{% for i in players %}
+		{% if i.position == 'CenterBack' %}
+    
+		<p>{{i.name}}</p>
+	
+
+		<p>{{i.description}}</p>
+	
+
+		<p>{{i.jersey}}</p>
+        <p> {{i.position}}</p>
+	
+		<a href='{{url_for('editPlayer', club_id = club.id, player_id=i.id ) }}' >Edit</a>
+	</br>
+	<a href='{{url_for('deletePlayer', club_id = club.id, player_id=i.id ) }}' >Delete</a>
+</br>
+</br>
+        {% endif %}
+
+		{% endfor %}
+		
+		
+
+		</br></br>
+
+	<h2>FullBack</h2>
+
+		{% for i in players %}
+		{% if i.position == 'FullBack' %}
+
+		<p>{{i.name}}</p>
+	
+
+		<p>{{i.description}}</p>
+	
+
+		<p>{{i.jersey}}</p>
+        <p> {{i.position}}</p>
+	
+		<a href='{{url_for('editPlayer', club_id = club.id, player_id=i.id ) }}' >Edit</a>
+	
+	<a href='{{url_for('deletePlayer', club_id = club.id, player_id=i.id ) }}' >Delete</a>
+</br>
+</br>
+		{% endif %}
+
+		{% endfor %}
+		
+		
+
+		</br></br>
+
+	<h2>Midfielder</h2>
+
+		{% for i in players %}
+		{% if i.position == 'Midfielder' %}
+
+		<p>{{i.name}}</p>
+	
+
+		<p>{{i.description}}</p>
+	
+
+		<p>{{i.jersey}}</p>
+        <p> {{i.position}}</p>
+
+		<a href='{{url_for('editPlayer', club_id = club.id, player_id=i.id ) }}' >Edit</a>
+	</br>
+	<a href='{{url_for('deletePlayer', club_id = club.id, player_id=i.id ) }}' >Delete</a>
+</br>
+</br>
+{% endif %}
+{% endfor %}
+
+	<h2>Strikers</h2>
+
+		{% for i in players %}
+		{% if i.position == 'Striker' %}
+
+		<p>{{i.name}}</p>
+	
+
+		<p>{{i.description}}</p>
+	
+
+		<p>{{i.jersey}}</p>
+        <p> {{i.position}}</p>
+
+		<a href='{{url_for('editPlayer', club_id = club.id, player_id=i.id ) }}' >Edit</a>
+	</br>
+	<a href='{{url_for('deletePlayer', club_id = club.id, player_id=i.id ) }}' >Delete</a>
+</br>
+</br>
+{% endif %}
+
+		{% endfor %}
+		
+		
+
+	<	{% else %}
+		<p> You currently have no menu players. <p>
+		<a href = "{{url_for('newPlayer', club_id = club.id )}}">Sign New Player</a> 
+			{% endif %}
+</div>
+	{% endblock %}

@@ -1,0 +1,31 @@
+
+
+<nav>
+	<div class="nav-wrapper">
+        <h1 align="center">Dream League</h1>
+		<ul id="nav-mobile" class="right hide-on-med-and-down">
+			<li>
+				<a href="{{url_for('showClubs')}}" class="waves-effect waves-light btn">
+					<span class="glyphicon glyphicon-soccer-ball"></span> Show All Clubs
+				</a>
+			</li>
+			{% if login == 0 %}
+			
+			<li>
+				<a href="{{url_for('showLogin')}}" class="waves-effect waves-light btn">
+					<span class="glyphicon glyphicon-log-in"></span> Login
+				</a>
+			</li>
+			{% endif %}
+			{% if login == 1 %}
+			
+			<li>
+				<a href="{{url_for('gdisconnect')}}" class="waves-effect waves-light btn">
+					<span class="glyphicon glyphicon-log-out"></span> Logout
+				</a>
+			</li>
+			{% endif %}
+		
+		</ul>
+	</div>
+</nav>
